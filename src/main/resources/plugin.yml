@@ -1,0 +1,13 @@
+name: RunesLegendaryV
+version: 1.0.0
+main: dev.vaileks.runeslegendaryv.RunesLegendaryV
+api-version: '1.21.11'
+author: Vaileks
+commands:
+  runeslegendaryv:
+    aliases: [rlv]
+    description: Управление четырьмя легендарными предметами
+    permission: runeslegendaryv.admin
+permissions:
+  runeslegendaryv.admin:
+    default: op
