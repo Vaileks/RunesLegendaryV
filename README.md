@@ -40,3 +40,9 @@ Existing items update on login, inventory opening, pickup and reload without res
 Commands: `/rlv` opens the admin item menu; `/rlv give <player> <life|judge|rail|glove> [amount]` gives an item; `/rlv resetcd <player>` resets cooldowns. Permission: `runeslegendaryv.admin` (operators by default). Requires Paper 1.21.11 and Java 21+. No other plugins are required. Custom models and sounds require the server resource pack, which is not bundled in this JAR.
 
 `tests/LocalizationAudit.java` checks Russian/English key parity and placeholders, English tooltips/action bars, reload, legacy migration, custom overrides, and preservation of item data.
+
+## Links
+
+- Modrinth: https://modrinth.com/plugin/runeslegendaryv
+- Resource pack and support: https://discord.gg/ssXctkBkQD
+- Source: https://github.com/Vaileks/RunesLegendaryV
