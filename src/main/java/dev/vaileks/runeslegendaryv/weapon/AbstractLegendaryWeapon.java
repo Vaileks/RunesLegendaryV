@@ -6,6 +6,7 @@ public abstract class AbstractLegendaryWeapon {
  protected AbstractLegendaryWeapon(ULegendaryContext context,String key){this.context=context;this.settings=context.settings();this.keys=context.keys();this.key=key;this.config=settings.section(key);}
  public String getName(){return key;}
  public ItemStack getItem(){if(cachedItem==null)cachedItem=buildItem();ItemStack result=cachedItem.clone();var meta=result.getItemMeta();String id=UUID.randomUUID().toString();meta.getPersistentDataContainer().set(ID,PersistentDataType.STRING,id);var use=meta.getUseCooldown();use.setCooldownSeconds(.05f);use.setCooldownGroup(new NamespacedKey("runeslegendaryv","item_"+id));meta.setUseCooldown(use);result.setItemMeta(meta);return result;}
+ public void refreshText(ItemStack item){if(!isItem(item))return;var meta=item.getItemMeta();meta.displayName(ItemUtil.parse(config.getString("name",key)));item.setItemMeta(meta);Presentation.decorate(item,config,key);}
  public ItemStack getProcessedItem(){return getItem();}
  protected List<ItemStack> buildTemplates(){return List.of(getItem());}public void invalidateTemplates(){}
  public boolean isItem(ItemStack item){return item!=null&&item.hasItemMeta()&&key.equals(item.getItemMeta().getPersistentDataContainer().get(TYPE,PersistentDataType.STRING));}

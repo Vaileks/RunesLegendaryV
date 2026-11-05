@@ -1,4 +1,3 @@
-name: '&6Судный меч'
 material: NETHERITE_SWORD
 item_model: bloodstone:tools/judge_sword/default/judge_sword
 shuffleCooldownTicks: 1800
@@ -15,7 +14,3 @@ attackSpeed: 1.6
 auraPeriodTicks: 5
 killSoundVolume: 3.0
 killSoundPitch: 1
-lore-description:
-- "Клинок последнего суда. На его стали не осталось имён оправданных — только следы тех, кому был вынесен приговор."
-lore-abilities:
-- "Shift + ПКМ — следующий удар перемешает инвентарь противника."

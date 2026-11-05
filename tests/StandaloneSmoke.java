@@ -4,11 +4,11 @@ import dev.vaileks.runeslegendaryv.RunesLegendaryV;import dev.vaileks.runeslegen
 
 public final class StandaloneSmoke extends JavaPlugin {
  int checks;void check(boolean value,String message){checks++;if(!value)throw new AssertionError(message);}
- public void onEnable(){Bukkit.getScheduler().runTaskLater(this,()->{try{run();getLogger().info("STANDALONE_PASS checks="+checks);}catch(Throwable e){getLogger().severe("STANDALONE_FAIL "+e);e.printStackTrace();}finally{Bukkit.shutdown();}},30);}
+ public void onEnable(){Bukkit.getScheduler().runTaskLater(this,()->{try{run();LocalizationAudit.run((RunesLegendaryV)Bukkit.getPluginManager().getPlugin("RunesLegendaryV"));getLogger().info("STANDALONE_PASS checks="+checks);}catch(Throwable e){getLogger().severe("STANDALONE_FAIL "+e);e.printStackTrace();}finally{Bukkit.shutdown();}},30);}
  static Object zero(Class<?> t){if(!t.isPrimitive())return null;if(t==boolean.class)return false;if(t==int.class)return 0;if(t==long.class)return 0L;if(t==float.class)return 0f;if(t==double.class)return 0d;return null;}
  @SuppressWarnings("unchecked")static <T>T proxy(Class<T> type,InvocationHandler h){return(T)Proxy.newProxyInstance(type.getClassLoader(),new Class[]{type},h);}
  static final class Avatar {
-  final UUID id=UUID.randomUUID();final ItemStack[] slots=new ItemStack[41];final ItemStack data=new ItemStack(Material.PAPER);final PersistentDataContainer pdc=data.getItemMeta().getPersistentDataContainer();final PlayerInventory inv;final Player player;final Location location;boolean online=true;final Map<Object,Integer> cooldowns=new HashMap<>();
+  final UUID id=UUID.randomUUID();final ItemStack[] slots=new ItemStack[41];final ItemStack data=new ItemStack(Material.PAPER);final PersistentDataContainer pdc=data.getItemMeta().getPersistentDataContainer();final PlayerInventory inv;final Player player;final Location location;boolean online=true;final java.util.List<net.kyori.adventure.text.Component> messages=new java.util.ArrayList<>(),actionBars=new java.util.ArrayList<>();final Map<Object,Integer> cooldowns=new HashMap<>();
   Avatar(Location at){location=at;inv=proxy(PlayerInventory.class,(o,m,a)->switch(m.getName()){
    case "getItemInMainHand"->copy(slots[0]);case "getItemInOffHand"->copy(slots[40]);case "getItem"->copy(slots[(int)a[0]]);
    case "setItem"->{slots[(int)a[0]]=copy((ItemStack)a[1]);yield null;}case "setItemInMainHand"->{slots[0]=copy((ItemStack)a[0]);yield null;}case "setItemInOffHand"->{slots[40]=copy((ItemStack)a[0]);yield null;}
@@ -18,6 +18,7 @@ public final class StandaloneSmoke extends JavaPlugin {
     case "getUniqueId"->id;case "getName"->"Fixture";case "isOnline","isValid"->online;case "isDead"->false;case "getGameMode"->GameMode.SURVIVAL;
     case "getInventory"->inv;case "getLocation"->location.clone();case "getEyeLocation"->location.clone().add(0,1.62,0);case "getWorld"->location.getWorld();case "getPersistentDataContainer"->pdc;
     case "getAttackCooldown"->1f;case "getHeight"->1.8;case "getHealth"->20d;case "getAbsorptionAmount"->0d;case "getVelocity"->new org.bukkit.util.Vector();
+    case "sendMessage"->{if(a[0] instanceof net.kyori.adventure.text.Component c)messages.add(c);yield null;}case "sendActionBar"->{if(a[0] instanceof net.kyori.adventure.text.Component c)actionBars.add(c);yield null;}
     case "getScoreboard"->Bukkit.getScoreboardManager().getMainScoreboard();
     case "setCooldown"->{cooldowns.put(a[0],(int)a[1]);yield null;}case "getCooldown"->cooldowns.getOrDefault(a[0],0);case "hasCooldown"->cooldowns.getOrDefault(a[0],0)>0;
     case "hashCode"->id.hashCode();case "equals"->o==a[0];default->zero(m.getReturnType());});

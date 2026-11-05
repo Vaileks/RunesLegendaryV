@@ -1,0 +1,86 @@
+{
+  "messages": {
+    "no-permission": "&cYou do not have permission.",
+    "console-usage": "/{command} give <player> <item> [amount]",
+    "reloaded": "&aRunesLegendaryV: settings reloaded.",
+    "not-found": "&cPlayer or item not found.",
+    "invalid-amount": "&cEnter an amount from 1 to 64.",
+    "given": "&aItem given to {player}.",
+    "player-not-found": "&cPlayer not found.",
+    "reset": "&aCooldowns reset.",
+    "usage": "/{command} [menu|give <player> <item> [amount]|reload|resetcd <player>]",
+    "cooldown": "&cAbility on cooldown ({time})",
+    "ready": "&aAbility ready: ",
+    "ability": "Ability",
+    "judge-death": "{victim} fell to {killer}'s Judge Sword"
+  },
+  "menu": {
+    "title": "Legendary Items"
+  },
+  "tooltip": {
+    "mainhand": "When in Main Hand:",
+    "damage": "Attack Damage ",
+    "speed": "Attack Speed "
+  },
+  "items": {
+    "mechzhizni": {
+      "name": "&6Sword of Life",
+      "lore-description": [
+        "Forged from the wood of Yggdrasil, this blade grows stronger with every strike. Its blessing grants control over nature."
+      ],
+      "lore-abilities": [
+        "Right-click — the next hit binds an enemy in vines. Right-click again to disable.",
+        "Fully charged hit — builds bonus damage against the same target, including shield hits."
+      ]
+    },
+    "JudgeSword": {
+      "name": "&6Judge Sword",
+      "lore-description": [
+        "The blade of final judgement. Its steel bears no names of the innocent, only the marks of those it condemned."
+      ],
+      "lore-abilities": [
+        "Shift + Right-click — the next hit shuffles the enemy's inventory."
+      ]
+    },
+    "relsatron": {
+      "name": "&6Railgun",
+      "lore-description": [
+        "A weapon that accelerates its projectile with a magnetic field. The farther its target, the more devastating the impact."
+      ],
+      "lore-abilities": [
+        "Hold Right-click — fully charge the weapon.",
+        "Release Right-click — fire.",
+        "Left-click — cancel charging."
+      ],
+      "charge": {
+        "prefix": "&eCharge &f",
+        "no_ammo_text": "&cNo ammunition: &f%ammo%",
+        "charged_text": "&aFully charged &7- release Right-click",
+        "weak_release": {
+          "text": "&cNot fully charged &7- wait until 100%"
+        },
+        "cooldown": {
+          "text": "&cRailgun is recharging"
+        }
+      }
+    },
+    "perchatkastoikosti": {
+      "name": "&6Gauntlet of Fortitude",
+      "lore-description": [
+        "A device from an unknown civilization. Its core turns life energy into protection, while its stored impulse can send an enemy flying."
+      ],
+      "lore-abilities": [
+        "Off Hand — grants protection and uses stored totems.",
+        "Right-click — block with the gauntlet in your off hand.",
+        "Shift + Right-click — open totem storage.",
+        "Main-hand hit — knock an enemy back and deal true damage."
+      ],
+      "totem_menu": {
+        "title": "&7Gauntlet of Fortitude",
+        "filled_name": "&dTotem of Undying",
+        "empty_name": "&7Empty slot",
+        "denied": "&cThe gauntlet already holds &f%max% &ctotems"
+      }
+    }
+  }
+}

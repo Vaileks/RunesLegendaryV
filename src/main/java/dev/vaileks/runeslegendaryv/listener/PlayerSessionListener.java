@@ -24,6 +24,7 @@ implements Listener {
 
     @EventHandler(priority=EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent playerJoinEvent) {
+        this.plugin.localizeInventory(playerJoinEvent.getPlayer().getInventory());
         this.plugin.gauntlet().syncStats(playerJoinEvent.getPlayer());
     }
 

@@ -19,7 +19,7 @@ public final class JudgeSwordKillListener implements Listener {
             var config=dev.vaileks.runeslegendaryv.support.Presets.config("CustomSpeedItems","JudgeSword");
             victim.getWorld().playSound(victim.getLocation(),"minecraft:entity.wither.spawn",org.bukkit.SoundCategory.PLAYERS,
                     (float)config.getDouble("killSoundVolume",3),(float)config.getDouble("killSoundPitch",1));
-            event.deathMessage(Component.text(victim.getName()+" пал от Судного меча игрока "+killer.getName(),NamedTextColor.WHITE));
+            event.deathMessage(dev.vaileks.runeslegendaryv.config.Language.component("messages.judge-death","victim",victim.getName(),"killer",killer.getName()));
         }
     }
 }

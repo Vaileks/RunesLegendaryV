@@ -6,7 +6,7 @@ author: Vaileks
 commands:
   runeslegendaryv:
     aliases: [rlv]
-    description: Управление четырьмя легендарными предметами
+    description: Manage legendary items, settings and cooldowns
     permission: runeslegendaryv.admin
 permissions:
   runeslegendaryv.admin:

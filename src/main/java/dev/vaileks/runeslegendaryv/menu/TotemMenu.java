@@ -34,12 +34,12 @@ implements InventoryHolder {
         this.sourceSlot = sourceSlot;
         this.storageId = storageId;
         this.max = n2;
-        this.filledName = cfg.string("filled_name", "&d\u0422\u043e\u0442\u0435\u043c \u043d\u0435\u0436\u0438\u0442\u0438");
-        this.emptyName = cfg.string("empty_name", "&7\u041f\u0443\u0441\u0442\u043e\u0439 \u0441\u043b\u043e\u0442");
+        this.filledName = cfg.string("filled_name", dev.vaileks.runeslegendaryv.config.Language.text("items.perchatkastoikosti.totem_menu.filled_name"));
+        this.emptyName = cfg.string("empty_name", dev.vaileks.runeslegendaryv.config.Language.text("items.perchatkastoikosti.totem_menu.empty_name"));
         this.insertSound = cfg.string("insert_sound", "block.beacon.power_select");
         this.removeSound = cfg.string("remove_sound", "block.respawn_anchor.deplete");
-        this.denied = cfg.string("denied", "&c\u0412 \u043f\u0435\u0440\u0447\u0430\u0442\u043a\u0435 \u0443\u0436\u0435 &f%max% &c\u0442\u043e\u0442\u0435\u043c\u0430");
-        String string = cfg.string("title", "&7\u041f\u0435\u0440\u0447\u0430\u0442\u043a\u0430 \u0441\u0442\u043e\u0439\u043a\u043e\u0441\u0442\u0438");
+        this.denied = cfg.string("denied", dev.vaileks.runeslegendaryv.config.Language.text("items.perchatkastoikosti.totem_menu.denied"));
+        String string = cfg.string("title", dev.vaileks.runeslegendaryv.config.Language.text("items.perchatkastoikosti.totem_menu.title"));
         this.inventory = Bukkit.createInventory((InventoryHolder)this, (InventoryType)InventoryType.HOPPER, (Component)ItemUtil.parse(string));
         int n3 = Math.max(0, Math.min(n2, this.inventory.getSize() - 1));
         for (int i = 0; i < n3; ++i) {

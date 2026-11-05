@@ -74,7 +74,7 @@ implements Listener {
     }
 
     private void syncLater(org.bukkit.entity.Player player) {
-        context.tasks().entityLater(player,1L,()->{if(player.isOnline()&&!player.isDead())plugin.gauntlet().syncStats(player);});
+        context.tasks().entityLater(player,1L,()->{if(player.isOnline()&&!player.isDead()){plugin.localizeInventory(player.getInventory());plugin.gauntlet().syncStats(player);}});
     }
 }
 

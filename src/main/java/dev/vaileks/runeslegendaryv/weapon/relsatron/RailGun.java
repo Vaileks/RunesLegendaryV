@@ -74,7 +74,7 @@ extends AbstractLegendaryWeapon {
             if (this.context.cooldowns().ready(player, "relsatron_shot") && this.context.abilityCooldown().ready(player, KEY, itemStack)) {
                 Material ammoMaterial = this.ammoMaterial();
                 if (!player.getInventory().contains(ammoMaterial)) {
-                    String noAmmo = this.charge().string("no_ammo_text", "&c\u041d\u0435\u0442 \u0431\u043e\u0435\u043f\u0440\u0438\u043f\u0430\u0441\u0430: &f%ammo%");
+                    String noAmmo = this.charge().string("no_ammo_text", dev.vaileks.runeslegendaryv.config.Language.text("items.relsatron.charge.no_ammo_text"));
                     player.sendActionBar(ItemUtil.parse(noAmmo.replace("%ammo%", ammoMaterial.name())));
                     SoundUtil.play(player, "block.note_block.bass", 0.6f, 0.6f);
                     return;
@@ -94,7 +94,7 @@ extends AbstractLegendaryWeapon {
                 }
             } else {
                 Cfg cfg = Cfg.child(this.charge().raw(), "cooldown");
-                player.sendActionBar(ItemUtil.parse(cfg.string("text", "&c\u0420\u0435\u043b\u044c\u0441\u0430\u0442\u0440\u043e\u043d \u043f\u0435\u0440\u0435\u0437\u0430\u0440\u044f\u0436\u0430\u0435\u0442\u0441\u044f")));
+                player.sendActionBar(ItemUtil.parse(cfg.string("text", dev.vaileks.runeslegendaryv.config.Language.text("items.relsatron.charge.cooldown.text"))));
             }
         }
     }
@@ -105,7 +105,7 @@ extends AbstractLegendaryWeapon {
         int n2 = Math.max(1, cfg.integer("segments", 2));
         String string = cfg.string("bar_filled", "&a\u25b0");
         String string2 = cfg.string("bar_empty", "&7\u25b0");
-        String string3 = cfg.string("prefix", "&e\u0417\u0430\u0440\u044f\u0434 &f");
+        String string3 = cfg.string("prefix", dev.vaileks.runeslegendaryv.config.Language.text("items.relsatron.charge.prefix"));
         int[] nArray = new int[]{0};
         player.sendActionBar(ItemUtil.parse(string3 + RailGun.bar(0.0, n2, string, string2)));
         Scheduler.Task[] taskArray = new Scheduler.Task[1];
@@ -118,7 +118,7 @@ extends AbstractLegendaryWeapon {
                 if (nArray[0] >= n) {
                     this.stopCharge(player, taskArray[0]);
                     this.charged.add(player.getUniqueId());
-                    player.sendActionBar(ItemUtil.parse(cfg.string("charged_text", "&a\u0417\u0430\u0440\u044f\u0434 \u0433\u043e\u0442\u043e\u0432 &7- \u043e\u0442\u043f\u0443\u0441\u0442\u0438\u0442\u0435 \u041f\u041a\u041c")));
+                    player.sendActionBar(ItemUtil.parse(cfg.string("charged_text", dev.vaileks.runeslegendaryv.config.Language.text("items.relsatron.charge.charged_text"))));
                     if (cfg.flag("auto_fire_on_full", false)) {
                         this.shoot(player, 1.0);
                         this.charged.remove(player.getUniqueId());
@@ -169,7 +169,7 @@ extends AbstractLegendaryWeapon {
             this.charged.remove(player.getUniqueId());
             if (!bl) {
                 Cfg cfg = Cfg.child(this.charge().raw(), "weak_release");
-                player.sendActionBar(ItemUtil.parse(cfg.string("text", "&c\u0417\u0430\u0440\u044f\u0434 \u043d\u0435\u043f\u043e\u043b\u043d\u044b\u0439 &7- \u043d\u0443\u0436\u043d\u043e \u0434\u043e\u0436\u0434\u0430\u0442\u044c\u0441\u044f 100%")));
+                player.sendActionBar(ItemUtil.parse(cfg.string("text", dev.vaileks.runeslegendaryv.config.Language.text("items.relsatron.charge.weak_release.text"))));
                 SoundUtil.play(player, cfg.string("sound", "block.note_block.bass"), cfg.decimal("volume", 0.6f), cfg.decimal("pitch", 0.6f));
             }
         }

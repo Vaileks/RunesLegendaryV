@@ -1,7 +1,7 @@
 package dev.vaileks.runeslegendaryv.support;
 import java.util.*;import org.bukkit.*;import org.bukkit.attribute.*;import org.bukkit.inventory.*;import org.bukkit.inventory.meta.ItemMeta;import net.kyori.adventure.text.*;import net.kyori.adventure.text.format.*;
 public final class Presentation {
- private static final int WIDTH=38;private static final String SECTION="Когда в ведущей руке:",DAMAGE="Урон при атаке ",SPEED="Скорость атаки ";
+ private static final int WIDTH=38;
  public static void decorate(ItemStack item,org.bukkit.configuration.ConfigurationSection config,String key){var meta=item.getItemMeta();meta.displayName(meta.displayName().font(NamespacedKey.minecraft("default")).decoration(TextDecoration.ITALIC,false));meta.lore(render(config.getStringList("lore-description"),config.getStringList("lore-abilities"),value(item,meta,Attribute.ATTACK_DAMAGE,1),value(item,meta,Attribute.ATTACK_SPEED,4)));String palette=key.equals("mechzhizni")?"earth":key.equals("JudgeSword")?"gold":"shard";meta.setTooltipStyle(NamespacedKey.fromString(config.getString("tooltip-style","minecraft:"+palette)));meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES,ItemFlag.HIDE_ENCHANTS,ItemFlag.HIDE_UNBREAKABLE);item.setItemMeta(meta);}
     public static double value(ItemStack item,ItemMeta meta,Attribute attribute,double base) {
         var attributes=meta.getAttributeModifiers();
@@ -38,9 +38,9 @@ public final class Presentation {
                 else result.add(line(rows.get(i),NamedTextColor.GRAY));
             }
         }
-        result.add(Component.empty());result.add(line(SECTION,NamedTextColor.GRAY));
-        result.add(line(" "+DAMAGE+number(damage),NamedTextColor.DARK_GREEN));
-        result.add(line(" "+SPEED+number(speed),NamedTextColor.DARK_GREEN));
+        result.add(Component.empty());result.add(line(dev.vaileks.runeslegendaryv.config.Language.text("tooltip.mainhand"),NamedTextColor.GRAY));
+        result.add(line(" "+dev.vaileks.runeslegendaryv.config.Language.text("tooltip.damage")+number(damage),NamedTextColor.DARK_GREEN));
+        result.add(line(" "+dev.vaileks.runeslegendaryv.config.Language.text("tooltip.speed")+number(speed),NamedTextColor.DARK_GREEN));
         return result;
     }
     public static List<String> wrap(String paragraph,int limit) {
