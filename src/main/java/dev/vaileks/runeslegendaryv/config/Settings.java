@@ -34,4 +34,3 @@ public final class Settings {
         return (float)this.config.getDouble("interact_cooldown", 0.7);
     }
 }
-

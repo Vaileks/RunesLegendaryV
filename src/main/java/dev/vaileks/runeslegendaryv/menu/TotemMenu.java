@@ -129,4 +129,3 @@ implements InventoryHolder {
         return this.inventory;
     }
 }
-

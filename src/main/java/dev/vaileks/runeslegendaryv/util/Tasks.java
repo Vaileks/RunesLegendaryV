@@ -41,4 +41,3 @@ public final class Tasks {
         return this.scheduler.runAtEntityAtFixedRate(entity, l, l2, NOOP, runnable);
     }
 }
-

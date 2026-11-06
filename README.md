@@ -1,48 +1,42 @@
 # RunesLegendaryV
 
-Paper 1.21.11 · Java 21+ · Vaileks
+Standalone Paper 1.21.11 plugin by Vaileks. Includes Sword of Life, Judge Sword, Railgun and Gauntlet of Fortitude. Java 21+ is required; other plugins are not required.
 
-Самостоятельный плагин: меч жизни, судный меч, рельсатрон и перчатка стойкости. Зависимостей от других плагинов нет. Предметы используют модели и звуки существующего серверного ресурспака; файлы ресурспака в плагин не включены.
+Custom models, animated vines, tooltip styles and sounds require the compatible server resource pack, distributed through the Discord link below. The resource pack is not bundled in the JAR.
 
-## Команды
+## Commands
 
-- `/rlv` — меню выдачи.
-- `/rlv give <игрок> <life|judge|rail|glove> [количество]` — выдать предмет.
-- `/rlv reload` — перечитать настройки.
-- `/rlv resetcd <игрок>` — сбросить перезарядки.
+- `/rlv` — open the admin item menu.
+- `/rlv give <player> <life|judge|rail|glove> [amount]` — give an item.
+- `/rlv reload` — reload settings and language.
+- `/rlv resetcd <player>` — reset cooldowns.
 
-Право: `runeslegendaryv.admin`, по умолчанию у операторов.
+Full command: `/runeslegendaryv`. Permission: `runeslegendaryv.admin` (operators by default).
 
-## Настройки
+## Configuration
 
-`plugins/RunesLegendaryV/config.yml` — общие настройки.
+- `plugins/RunesLegendaryV/config.yml` — general settings and `language: ru` or `language: en`.
+- `plugins/RunesLegendaryV/items/` — damage, cooldowns, abilities, models and sounds for each item.
+- `plugins/RunesLegendaryV/lang/` — messages, menus, names and descriptions.
 
-`plugins/RunesLegendaryV/items/` — четыре отдельных файла предметов. Здесь настраиваются способности, урон, перезарядки, модели, звуки и описание. Рецептов и пьедесталов нет. Судный меч не выдаёт баны.
+Apply changes with `/rlv reload`. Custom text in an item configuration overrides the selected translation; remove that field to use the language file. Legacy default Russian text migrates automatically. Updating item text preserves models, attributes, stored totems and cooldowns.
 
-## Сборка
+There are no pedestal recipes or ban integrations.
 
-Установить JDK 21+ и Python 3. Paper API 1.21.11 и зависимости Adventure, JOML, Guava, JetBrains/JSPECIFY и BungeeCord Chat должны находиться в локальном Maven-кэше `~/.m2/repository`. Можно указать путь к Paper API через `PAPER_API`, к JDK через `JAVA_HOME`.
+## Build
 
-`python3 build.py`
+Requires Python 3, JDK 21+ and Paper API 1.21.11 with Adventure, JOML, Guava, JetBrains/JSPECIFY and BungeeCord Chat dependencies in the local Maven cache (`~/.m2/repository`). Optional environment variables: `JAVA_HOME` and `PAPER_API`.
 
-Результат: `RunesLegendaryV.jar`.
+```sh
+python3 build.py
+```
 
-`tests/StandaloneSmoke.java` — проверка запуска, предметов, лозы, кулдаунов, сериализации тотемов и чистого урона на отдельном тестовом Paper-сервере. Тестовый помощник завершает сервер после проверки; его нельзя устанавливать на рабочий сервер.
+Output: `RunesLegendaryV.jar`.
 
-## Language
-
-Set `language: en` or `language: ru` in `plugins/RunesLegendaryV/config.yml`, then run `/rlv reload`.
-
-Edit messages, menu titles, item names, descriptions and charge indicators in `lang/en.yml` and `lang/ru.yml`. Configure gameplay in `items/`. Missing translations use the bundled text for the selected language. Legacy default Russian text migrates automatically. Custom text in an item configuration remains an explicit override; remove that text field to use the language bundle.
-
-Existing items update on login, inventory opening, pickup and reload without resetting their models, attributes, stored totems or cooldowns.
-
-Commands: `/rlv` opens the admin item menu; `/rlv give <player> <life|judge|rail|glove> [amount]` gives an item; `/rlv resetcd <player>` resets cooldowns. Permission: `runeslegendaryv.admin` (operators by default). Requires Paper 1.21.11 and Java 21+. No other plugins are required. Custom models and sounds require the server resource pack, which is not bundled in this JAR.
-
-`tests/LocalizationAudit.java` checks Russian/English key parity and placeholders, English tooltips/action bars, reload, legacy migration, custom overrides, and preservation of item data.
+`tests/StandaloneSmoke.java` and `tests/LocalizationAudit.java` check item mechanics, cooldowns, totem serialization and RU/EN localization on a disposable Paper test server. The test helper shuts down the server and must not be installed on a production server.
 
 ## Links
 
-- Modrinth: https://modrinth.com/plugin/runeslegendaryv
-- Resource pack and support: https://discord.gg/ssXctkBkQD
-- Source: https://github.com/Vaileks/RunesLegendaryV
+- [Modrinth](https://modrinth.com/plugin/runeslegendaryv)
+- [Resource pack and support](https://discord.gg/ssXctkBkQD)
+- [Source](https://github.com/Vaileks/RunesLegendaryV)

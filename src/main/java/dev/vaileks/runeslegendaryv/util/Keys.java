@@ -20,4 +20,3 @@ public final class Keys {
         return new NamespacedKey(this.plugin, string);
     }
 }
-

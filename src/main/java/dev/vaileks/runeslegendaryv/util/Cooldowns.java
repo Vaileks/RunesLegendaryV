@@ -60,4 +60,3 @@ public final class Cooldowns {
         dev.vaileks.runeslegendaryv.support.Feedback.clear(player);
     }
 }
-
