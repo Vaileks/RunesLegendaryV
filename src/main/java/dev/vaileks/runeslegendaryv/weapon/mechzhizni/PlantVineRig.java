@@ -3,10 +3,10 @@ import org.bukkit.util.Transformation;
 import org.joml.Matrix3f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
-/** Recreated binding animation. Original server stem/leaf meshes and texture are bundled separately. */
+/** Binding animation. Meshes from the supplied Blockbench model are distributed separately. */
 public final class PlantVineRig {
  private PlantVineRig(){}
- public static final String[] PARTS={"vine","vine","vine","vine","vine2","vine2","vine2","vine2"};
+ public static final String[] PARTS={"vine","vine_1","vine_2","vine_3","vine2","vine2_1","vine2_2","vine2_3"};
  private static double clamp(double value){return Math.max(0,Math.min(1,value));}
  private static double smooth(double value){value=clamp(value);return value*value*(3-2*value);}
  public static double progress(double age,double duration,double grow,double sink){

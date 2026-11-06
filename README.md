@@ -40,3 +40,5 @@ Output: `RunesLegendaryV.jar`.
 - [Modrinth](https://modrinth.com/plugin/runeslegendaryv)
 - [Resource pack and support](https://discord.gg/ssXctkBkQD)
 - [Source](https://github.com/Vaileks/RunesLegendaryV)
+
+Vine resource-pack additions: run `python3 tools/export_plant_vines.py <model.bbmodel> SwordOfLife-RP.zip` using the supplied eight-section model. Merge the archive’s `assets/` folder into the compatible pack and reload the pack on clients. The growth/wrapping timing and movement are unchanged; the plugin selects the eight matching meshes. The model and texture are not embedded in the JAR.
