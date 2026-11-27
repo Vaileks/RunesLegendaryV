@@ -1,0 +1,14 @@
+name: LegendaryWeaponsVL
+version: 2.0
+main: dev.vaileks.runeslegendaryv.RunesLegendaryV
+api-version: '1.21'
+author: Vaileks
+commands:
+  legendaryweaponsvl:
+    aliases: [lwv, rlv, runeslegendaryv]
+    description: Manage legendary items, settings and cooldowns
+permissions:
+  legendaryweaponsvl.admin:
+    default: op
+  runeslegendaryv.admin:
+    default: op

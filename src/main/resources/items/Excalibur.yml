@@ -1,0 +1,14 @@
+{
+  "material": "DIAMOND_SWORD",
+  "damage": 10,
+  "attack_speed": -2.4,
+  "item_model": "civilization:tools/excalibur_sword/normal",
+  "enchants": {
+    "sharpness": 9
+  },
+  "cooldown_ticks": 1040,
+  "duration_ticks": 500,
+  "hit_interval_ticks": 10,
+  "blocked_hits": 6,
+  "min_damage": 1.5
+}

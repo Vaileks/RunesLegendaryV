@@ -1,0 +1,123 @@
+package dev.vaileks.runeslegendaryv.weapon.judge;
+
+import dev.vaileks.runeslegendaryv.compat.Attributes;
+import dev.vaileks.runeslegendaryv.support.Cooldowner;
+import dev.vaileks.runeslegendaryv.support.DamageBridge;
+import dev.vaileks.runeslegendaryv.support.Presentation;
+import dev.vaileks.runeslegendaryv.util.ItemUtil;
+import dev.vaileks.runeslegendaryv.weapon.AbstractLegendaryWeapon;
+import dev.vaileks.runeslegendaryv.weapon.ULegendaryContext;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.inventory.EquipmentSlotGroup;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
+
+import java.util.List;
+
+public final class JudgeSword extends AbstractLegendaryWeapon implements Listener {
+    private final Cooldowner cooldown = new Cooldowner("judge_shuffle");
+    private final JudgeSwordShuffleState prepared = new JudgeSwordShuffleState();
+    private int tick;
+
+    public JudgeSword(ULegendaryContext context) {
+        super(context, "JudgeSword");
+    }
+
+    public Cooldowner getShuffleCooldowner() {
+        return cooldown;
+    }
+
+    public int getShuffleCooldownTicks() {
+        return config.getInt("shuffleCooldownTicks", 1800);
+    }
+
+    public List<Listener> listeners() {
+        return List.of(
+                this,
+                new JudgeSwordUseListener(this, prepared),
+                new JudgeSwordShuffleStrikeListener(this, prepared),
+                new JudgeSwordKillListener(this, null));
+    }
+
+    @Override
+    protected ItemStack buildItem() {
+        ItemStack item =
+                ItemUtil.base(
+                        ItemUtil.material(
+                                config.getString("material", "NETHERITE_SWORD"),
+                                Material.NETHERITE_SWORD),
+                        config.getString("name", "&6Judge Sword"),
+                        List.of());
+        applyItemModel(
+                item,
+                config.getString("item_model", "bloodstone:tools/judge_sword/default/judge_sword"));
+        ItemUtil.addAttribute(
+                item,
+                keys.attribute("judge_damage"),
+                Attributes.ATTACK_DAMAGE,
+                config.getDouble("baseDamage", 10.5),
+                EquipmentSlotGroup.MAINHAND);
+        ItemUtil.addAttribute(
+                item,
+                keys.attribute("judge_speed"),
+                Attributes.ATTACK_SPEED,
+                config.getDouble("attackSpeed", 1.6) - 4,
+                EquipmentSlotGroup.MAINHAND);
+        ItemUtil.enchant(item, "sharpness", config.getInt("sharpnessLevel", 9));
+        var meta = item.getItemMeta();
+        meta.getPersistentDataContainer().set(TYPE, PersistentDataType.STRING, key);
+        meta.setEnchantmentGlintOverride(false);
+        item.setItemMeta(meta);
+        Presentation.decorate(item, config, key);
+        return item;
+    }
+
+    public void start() {
+        context.tasks()
+                .globalTimer(
+                        5,
+                        Math.max(1, config.getInt("auraPeriodTicks", 5)),
+                        () -> {
+                            tick++;
+                            for (Player player : Bukkit.getOnlinePlayers()) {
+                                boolean has = false;
+                                for (ItemStack item : player.getInventory().getContents())
+                                    if (isItem(item)) {
+                                        has = true;
+                                        break;
+                                    }
+                                if (!has) continue;
+                                double angle = tick * .42, r = .28 + Math.sin(tick * .18) * .08;
+                                player.getWorld()
+                                        .spawnParticle(
+                                                Particle.LARGE_SMOKE,
+                                                player.getLocation()
+                                                        .add(
+                                                                Math.cos(angle) * r,
+                                                                .35,
+                                                                Math.sin(angle) * r),
+                                                0,
+                                                Math.cos(angle) * .42,
+                                                .04,
+                                                Math.sin(angle) * .42,
+                                                .08);
+                            }
+                        });
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void resurrect(org.bukkit.event.entity.EntityResurrectEvent event) {
+        DamageBridge.resurrected(event.getEntity());
+    }
+
+    public void clear() {
+        JudgeSwordEffects.clear();
+    }
+}

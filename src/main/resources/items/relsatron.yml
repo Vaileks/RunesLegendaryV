@@ -1,0 +1,81 @@
+material: SPYGLASS
+item_model: bloodstone:tools/rail_gun/default/rail_gun
+damage: 0.0
+attack_speed: 0.0
+speed_modifier: 0.0
+hide_enchants: true
+hide_glow: true
+enchants: {}
+lore: []
+
+# Cooldown begins after firing.
+cooldown: 6.0
+ammo_material: ANVIL
+
+charge:
+  # Maximum of two charge segments in the action bar: ▰▰.
+  segments: 2
+  bar_filled: '&a▰'
+  bar_empty: '&7▰'
+  auto_fire_on_full: false
+  release_threshold:
+    value: 1.0
+  weak_release:
+    sound: minecraft:block.note_block.bass
+    volume: 0.6
+    pitch: 0.6
+
+ability:
+  draw_time: 1.0
+  charge_time: 10.0
+  projectile_speed: 4.0
+  ballistic_coefficient: 0.04
+  projectile_block: ANVIL
+  projectile_scale: 0.6
+  flight:
+    substeps: 3
+  hit_radius: 0.35
+  max_flight_ticks: 200
+
+  # Adds 1 HP of damage per block travelled.
+  # A normal hit at 20 blocks deals 20 HP.
+  base_damage: 0.0
+  distance_damage_start: 0.0
+  distance_damage_coefficient: 1.0
+  headshot_multiplier: 2.0
+  headshot_fraction: 0.8
+  headshot_uhc_duration: 10.0
+
+  headshot_blood:
+    count: 28
+    offset_x: 0.18
+    offset_y: 0.12
+    offset_z: 0.18
+    speed: 0.05
+  headshot_effect:
+    type: WITHER
+    duration: 10.0
+    amplifier: 0
+
+sounds:
+  charge:
+    key: minecraft:block.beacon.power_select
+    volume: 1.0
+    pitch: 0.5
+  shoot:
+    key: bloodstone:rail_gun.shot
+    volume: 1.0
+    pitch: 1.0
+  flight:
+    key: minecraft:entity.firework_rocket.launch
+    volume: 0.6
+    pitch: 1.0
+    interval_ticks: 2
+  hit:
+    key: minecraft:block.anvil.land
+    volume: 1.0
+    pitch: 1.0
+  headshot:
+    key: bloodstone:rail_gun.headshot
+    volume: 1.0
+    pitch: 1.0

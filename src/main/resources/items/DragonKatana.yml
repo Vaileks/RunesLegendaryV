@@ -1,0 +1,14 @@
+{
+  "material": "DIAMOND_SWORD",
+  "item_model": "bloodstone:tools/dragon_katana/default/dragon_katana",
+  "rarity": "legendary",
+  "damage": 9.0,
+  "attack_speed": -2.4,
+  "movement_multiplier": 0.1,
+  "enchants": {
+    "sharpness": 11
+  },
+  "cooldown_ticks": 340,
+  "max_usages": 1,
+  "teleport_distance": 14
+}

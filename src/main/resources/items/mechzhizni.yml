@@ -1,0 +1,40 @@
+material: DIAMOND_SWORD
+item_model: bloodstone:tools/sword_of_nature/default/sword_of_nature
+damage: 8.0
+attack_speed: -2.4
+speed_modifier: 0.0
+hide_enchants: true
+hide_glow: true
+enchants:
+  sharpness: 7
+ability:
+  cooldown: 40.0
+  root_duration: 4.0
+  point_duration: 40.0
+  # Each full hit adds 0.075 HP bonus damage against the same target.
+  damage_per_point: 0.075
+root_effect:
+  item_model: runes:effects/life_vines/vine
+  model_enabled: true
+  scale: 1.35
+  grow_time: 1.0
+  sink_time: 1.0
+  brightness: 15
+  duration: 4.2
+  offset_x: 0.0
+  offset_y: 0.0
+  offset_z: 0.0
+  view_distance: 48.0
+aura:
+  particle: CHERRY_LEAVES
+  count: 3
+  radius: 0.6
+  y_offset: 1.0
+  interval_ticks: 20
+hit:
+  particle: BLOCK
+  block: MOSS_BLOCK
+  count: 8
+  offset: 0.3
+  speed: 0.05
+  y_offset: 1.0

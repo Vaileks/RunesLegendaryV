@@ -1,0 +1,8 @@
+{
+  "material": "IRON_HOE",
+  "custom_model_data": 1450,
+  "item_model": "bloodstone:tools/reaper_scythe/default/reaper_scythe",
+  "rarity": "legendary",
+  "hp_steal": 6,
+  "cooldown_ticks": 1100
+}

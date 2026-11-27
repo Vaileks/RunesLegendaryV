@@ -1,0 +1,11 @@
+{
+  "material": "DIAMOND_SWORD",
+  "damage": 9,
+  "attack_speed": -2.4,
+  "item_model": "civilization:tools/emerald_sword",
+  "currency": "EMERALD_BLOCK",
+  "material_per_sharpness": 64,
+  "rows": 2,
+  "max_sharpness": 18,
+  "full_by_default": false
+}

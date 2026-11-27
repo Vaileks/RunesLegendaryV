@@ -1,0 +1,111 @@
+{
+  "material": "DIAMOND_SWORD",
+  "rarity": "legendary",
+  "item_model": "bloodstone:tools/gamble_sword/default/gamble_sword",
+  "damage": 10.5,
+  "attack_speed": -2.4,
+  "enchants": {
+    "sharpness": 8
+  },
+  "roll_ticks": 10,
+  "jackpot": {
+    "item_model": "bloodstone:tools/gamble_sword/gold/gamble_sword",
+    "sharpness": 18,
+    "start_sound": "bloodstone:gamble_sword.gamble_sword2",
+    "loop_sound": "bloodstone:gamble_sword.gamble_sword3"
+  },
+  "powers": {
+    "light_mace": {
+      "enabled": true,
+      "duration_ticks": 0,
+      "cooldown": 20
+    },
+    "dragon": {
+      "enabled": true,
+      "duration_ticks": 0,
+      "cooldown": 8
+    },
+    "crystal": {
+      "enabled": true,
+      "duration_ticks": 800,
+      "cooldown": 20
+    },
+    "spider": {
+      "enabled": true,
+      "duration_ticks": 0,
+      "cooldown": 20
+    },
+    "excalibur": {
+      "enabled": true,
+      "duration_ticks": 500,
+      "cooldown": 20
+    },
+    "shadow": {
+      "enabled": true,
+      "duration_ticks": 320,
+      "cooldown": 30
+    },
+    "shrinker": {
+      "enabled": true,
+      "duration_ticks": 1200,
+      "cooldown": 20
+    },
+    "frost": {
+      "enabled": true,
+      "duration_ticks": 600,
+      "cooldown": 20
+    },
+    "mjolnir": {
+      "enabled": true,
+      "duration_ticks": 600,
+      "cooldown": 20
+    },
+    "reaper": {
+      "enabled": true,
+      "duration_ticks": 400,
+      "cooldown": 55
+    },
+    "jackpot": {
+      "enabled": true,
+      "duration_ticks": 822,
+      "cooldown": 30
+    }
+  },
+  "mjolnir": {
+    "damage": 5.25,
+    "radius": 3,
+    "hit_interval_ticks": 25,
+    "throw_cooldown_ticks": 160
+  },
+  "frost": {
+    "ticks_per_hit": 55,
+    "hit_interval_ticks": 10,
+    "ticks_to_slow": 40,
+    "ticks_to_freeze": 230,
+    "freeze_duration_ticks": 200,
+    "ticks_to_stun": 350,
+    "effect_reapply_ticks": 40,
+    "slowness_amplifier": 0,
+    "stun_duration_ticks": 100
+  },
+  "spider": {
+    "web_ticks": 300
+  },
+  "reaper": {
+    "hp_steal": 6
+  },
+  "shrinker": {
+    "scale": 0.5
+  },
+  "dragon": {
+    "distance": 14
+  },
+  "excalibur": {
+    "hits": 6,
+    "min_damage": 1.5
+  },
+  "light_mace": {
+    "forward": 0.6,
+    "upward": 1.75
+  }
+}

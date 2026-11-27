@@ -1,0 +1,25 @@
+{
+  "material": "MACE",
+  "item_model": "bloodstone:mace_skins/roulette",
+  "custom_model_data": 145,
+  "rarity": "epic",
+  "damage": 6,
+  "attack_speed": -3.4,
+  "curse_enabled": true,
+  "enchants": {
+    "wind_burst": 2,
+    "density": 4
+  },
+  "chance": 0.05,
+  "flight": {
+    "scale": 0.85,
+    "duration-ticks": 100,
+    "hover-ticks": 400,
+    "distance": 3.5,
+    "lift-ticks": 20,
+    "lift-height": 0.7,
+    "catch-reach": 3,
+    "dust-color": "#132d85",
+    "dust-size": 0.65
+  }
+}

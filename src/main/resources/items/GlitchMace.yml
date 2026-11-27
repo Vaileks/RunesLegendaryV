@@ -1,0 +1,23 @@
+{
+  "material": "MACE",
+  "item_model": "minecraft:mace",
+  "custom_model_data": 138,
+  "rarity": "epic",
+  "damage": 6,
+  "attack_speed": -3.4,
+  "curse_enabled": true,
+  "enchants": {
+    "wind_burst": 1,
+    "density": 4
+  },
+  "teleport_chance": 0.05,
+  "border_chance": 0.01,
+  "teleport": {
+    "min-distance": 15,
+    "max-distance": 20,
+    "border-min-inset": 8,
+    "border-max-inset": 24,
+    "attempts": 16,
+    "allow-new-chunks": true
+  }
+}

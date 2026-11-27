@@ -1,0 +1,15 @@
+{
+  "material": "SHIELD",
+  "item_model": "bloodstone:tools/netherite_shield/default/netherite_shield",
+  "rarity": "epic",
+  "offhand": {
+    "health": 4,
+    "armor": 4,
+    "toughness": 2
+  },
+  "enchants": {
+    "protection": 4,
+    "unbreaking": 3,
+    "thorns": 3
+  }
+}

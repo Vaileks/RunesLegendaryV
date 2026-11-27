@@ -1,0 +1,5 @@
+build/
+*.jar
+*.log
+test-cp.txt
+.DS_Store

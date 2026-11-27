@@ -1,0 +1,19 @@
+{
+  "material": "BOW",
+  "custom_model_data": 5000,
+  "item_model": "civilization:tools/artemis_bow/default",
+  "rarity": "legendary",
+  "enchants": {
+    "power": 12,
+    "flame": 2
+  },
+  "auto_aim_weight": 3,
+  "lightning_weight": 5,
+  "fire_ring_weight": 5,
+  "explosion_weight": 16,
+  "explosion_power": 3.75,
+  "homing_range": 8,
+  "fire_ring_radius": 2,
+  "break_blocks": true,
+  "grief_enabled": true
+}

@@ -1,0 +1,215 @@
+{
+  "messages": {
+    "no-permission": "&cYou do not have permission.",
+    "console-usage": "/{command} give <player> <item> [amount]",
+    "reloaded": "&aLegendaryWeaponsVL: settings reloaded.",
+    "not-found": "&cPlayer or item not found.",
+    "invalid-amount": "&cEnter an amount from 1 to 64.",
+    "given": "&aItem given to {player}.",
+    "player-not-found": "&cPlayer not found.",
+    "reset": "&aCooldowns reset.",
+    "usage": "/{command} [menu|give <player> <item> [amount]|reload|resetcd <player>]",
+    "cooldown": "&cAbility on cooldown ({time})",
+    "ready": "&aAbility ready: ",
+    "ability": "Ability",
+    "judge-death": "{victim} fell to {killer}'s Judge Sword",
+    "artemis-grief-on": "&aArea effects enabled.",
+    "artemis-grief-off": "&aArea effects disabled.",
+    "mace-no-curse": "Curse removed."
+  },
+  "menu": {
+    "title": "Legendary & Epic Items"
+  },
+  "tooltip": {
+    "mainhand": "When in Main Hand:",
+    "damage": "Attack Damage ",
+    "speed": "Attack Speed "
+  },
+  "items": {
+    "mechzhizni": {
+      "name": "&6Sword of Life",
+      "lore-description": [
+        "Forged from the wood of Yggdrasil, this blade grows stronger with every strike. Its blessing grants control over nature."
+      ],
+      "lore-abilities": [
+        "Right-click — the next hit binds an enemy in vines. Right-click again to disable.",
+        "Fully charged hit — builds bonus damage against the same target, including shield hits."
+      ]
+    },
+    "JudgeSword": {
+      "name": "&6Judge Sword",
+      "lore-description": [
+        "The blade of final judgement. Its steel bears no names of the innocent, only the marks of those it condemned."
+      ],
+      "lore-abilities": [
+        "Shift + Right-click — the next hit shuffles the enemy's inventory."
+      ]
+    },
+    "relsatron": {
+      "name": "&6Railgun",
+      "lore-description": [
+        "A weapon that accelerates its projectile with a magnetic field. The farther its target, the more devastating the impact."
+      ],
+      "lore-abilities": [
+        "Hold Right-click — fully charge the weapon.",
+        "Release Right-click — fire.",
+        "Left-click — cancel charging."
+      ],
+      "charge": {
+        "prefix": "&eCharge &f",
+        "no_ammo_text": "&cNo ammunition: &f%ammo%",
+        "charged_text": "&aFully charged &7- release Right-click",
+        "weak_release": {
+          "text": "&cNot fully charged &7- wait until 100%"
+        },
+        "cooldown": {
+          "text": "&cRailgun is recharging"
+        }
+      }
+    },
+    "perchatkastoikosti": {
+      "name": "&6Gauntlet of Fortitude",
+      "lore-description": [
+        "A device from an unknown civilization. Its core turns life energy into protection, while its stored impulse can send an enemy flying."
+      ],
+      "lore-abilities": [
+        "Off Hand — grants protection and uses stored totems.",
+        "Right-click — block with the gauntlet in your off hand.",
+        "Shift + Right-click — open totem storage.",
+        "Main-hand hit — knock an enemy back and deal true damage."
+      ],
+      "totem_menu": {
+        "title": "&7Gauntlet of Fortitude",
+        "filled_name": "&dTotem of Undying",
+        "empty_name": "&7Empty slot",
+        "denied": "&cThe gauntlet already holds &f%max% &ctotems"
+      }
+    },
+    "FlamingCrossbow": {
+      "name": "&dFlaming Crossbow",
+      "lore-description": [
+        "A crossbow with a searing string. Its arrows carry flame into battle."
+      ],
+      "lore-abilities": [
+        "Shoot — ignite the fired arrow."
+      ]
+    },
+    "NetheriteShield": {
+      "name": "&dNetherite Shield",
+      "lore-description": [
+        "Reinforced with netherite, this shield protects its bearer and strengthens their vitality."
+      ],
+      "lore-abilities": [
+        "Off Hand — +2 hearts, +4 armor and +2 armor toughness.",
+        "Right-click — block incoming attacks."
+      ]
+    },
+    "GambleSword": {
+      "name": "&6Lucky Sword",
+      "lore-description": [
+        "A blade won and lost at countless gaming tables. Its next power is known only to luck."
+      ],
+      "lore-abilities": [
+        "Right-click — roll one of 11 powers, including a jackpot.",
+        "Mjolnir — strikes call lightning; Right-click throws a thunder blade."
+      ]
+    },
+    "DragonKatana": {
+      "name": "&6Dragon Katana",
+      "lore-description": [
+        "A blade imbued with a dragon’s power. It cuts through space, leaving a trail of portal sparks."
+      ],
+      "lore-abilities": [
+        "Right-click — blink forward up to 14 blocks, passing through ordinary terrain.",
+        "Main Hand — +10% movement speed."
+      ]
+    },
+    "ReaperScythe": {
+      "name": "&6Reaper Scythe",
+      "lore-description": [
+        "The weapon of a hunter of lost souls. Its whisper reaches its prey before the reaper comes into view."
+      ],
+      "lore-abilities": [
+        "Fully charged hit — steal an enemy’s health and active potion effects."
+      ]
+    },
+    "ArtemisBow": {
+      "name": "&6Artemis Bow",
+      "lore-description": [
+        "The weapon of the goddess of the hunt. Its arrows sense their prey even when it believes it has escaped."
+      ],
+      "lore-abilities": [
+        "Shoot — a chance of homing, lightning, fire and an explosion.",
+        "Shift + Left-click — toggle area effects."
+      ]
+    },
+    "TelevisionMace": {
+      "name": "&dTelevision",
+      "lore-description": [
+        "Static flickers across a broken screen. Even a firm grip cannot always hold this strange device."
+      ],
+      "lore-abilities": [
+        "Hit — a 5% chance to drop the mace toward your opponent.",
+        "Left-click the flying mace to catch it. Any player can do so."
+      ]
+    },
+    "GlitchMace": {
+      "name": "&dGlitch",
+      "lore-description": [
+        "A crack in reality itself. Any hit may send its wielder somewhere unexpected."
+      ],
+      "lore-abilities": [
+        "Hit — a 5% chance to teleport the wielder 15–20 blocks.",
+        "A 1% chance to teleport near the world border to a safe spot."
+      ]
+    },
+    "MidasSword": {
+      "name": "&6Midas Sword",
+      "lore-description": [
+        "The blade of a king who wished to turn the world to gold. Its brilliance outlived its master, preserving both gift and curse."
+      ],
+      "lore-abilities": [
+        "Kill — receive gold.",
+        "Kill a new player — increase this sword’s Sharpness up to its limit."
+      ]
+    },
+    "EmeraldBlade": {
+      "name": "&6Emerald Blade",
+      "lore-description": [
+        "A sword forged around a flawless emerald. Its hilt holds a power once worth entire fortunes."
+      ],
+      "lore-abilities": [
+        "Shift + Right-click — open the emerald-block storage that empowers the blade."
+      ]
+    },
+    "Excalibur": {
+      "name": "&6Excalibur",
+      "lore-description": [
+        "The blade of a lost kingdom. Time erased its ruler’s name, but not the power held within its enchanted steel."
+      ],
+      "lore-abilities": [
+        "Right-click — activate protection against incoming attacks."
+      ]
+    }
+  },
+  "rarity": {
+    "legendary": "Legendary Item",
+    "epic": "Epic Item"
+  },
+  "gamble": {
+    "result": "&6Lucky Sword: &f{power}",
+    "powers": {
+      "light_mace": "Light Mace",
+      "dragon": "Dragon Katana",
+      "crystal": "Mirror Sword",
+      "spider": "Spider Sword",
+      "excalibur": "Excalibur",
+      "shadow": "Shadow Blade",
+      "shrinker": "Shrinker",
+      "frost": "Frost Sword",
+      "mjolnir": "Mjolnir",
+      "reaper": "Reaper Scythe",
+      "jackpot": "Jackpot"
+    }
+  }
+}

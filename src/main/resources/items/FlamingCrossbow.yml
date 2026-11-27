@@ -1,0 +1,9 @@
+{
+  "material": "CROSSBOW",
+  "custom_model_data": 6000,
+  "rarity": "epic",
+  "fire_ticks": 100,
+  "enchants": {
+    "flame": 1
+  }
+}

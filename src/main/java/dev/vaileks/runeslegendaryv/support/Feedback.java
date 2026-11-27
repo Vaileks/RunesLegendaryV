@@ -1,0 +1,127 @@
+package dev.vaileks.runeslegendaryv.support;
+
+import dev.vaileks.runeslegendaryv.RunesLegendaryV;
+import dev.vaileks.runeslegendaryv.compat.ServerCompat;
+import dev.vaileks.runeslegendaryv.config.Language;
+
+import net.kyori.adventure.text.Component;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Timer;
+import java.util.UUID;
+import java.util.function.LongSupplier;
+
+public final class Feedback {
+    private record Timer(UUID owner, Component name, LongSupplier left, long until) {}
+
+    private static final Map<String, Timer> active = new HashMap<>();
+    private static final Map<UUID, Long> waits = new HashMap<>(), readies = new HashMap<>();
+
+    public static void waiting(Player player, long millis) {
+        if (player == null || millis <= 0) return;
+        long now = System.currentTimeMillis();
+        if (now - waits.getOrDefault(player.getUniqueId(), 0L) < 1000) return;
+        waits.put(player.getUniqueId(), now);
+        long sec = Math.max(1, (millis + 999) / 1000);
+        ServerCompat.sendMessage(
+                player,
+                Language.component(
+                        "messages.cooldown",
+                        "time",
+                        (sec / 60) + ":" + String.format(java.util.Locale.ROOT, "%02d", sec % 60)));
+    }
+
+    public static boolean hasCooldown(Cooldowner cd, Player player, ItemStack item) {
+        long left = cd.remaining(player, item);
+        if (left > 0) {
+            waiting(player, left);
+            watch(
+                    player,
+                    cd.key(),
+                    left,
+                    item == null && player != null
+                            ? player.getInventory().getItemInMainHand()
+                            : item,
+                    () -> cd.remaining(player, item));
+        }
+        return left > 0;
+    }
+
+    public static void setCooldown(Cooldowner cd, Player player, ItemStack item, int ticks) {
+        cd.setCooldownWithoutIndicator(player, item, ticks);
+        if (item != null && player != null)
+            ServerCompat.setCooldown(player, item, Math.max(0, ticks));
+    }
+
+    public static void watch(
+            Player player, String key, long millis, ItemStack item, LongSupplier left) {
+        if (player == null || millis <= 0 || !RunesLegendaryV.instance().isEnabled()) return;
+        Component name =
+                item != null && item.hasItemMeta()
+                        ? ServerCompat.displayName(item.getItemMeta())
+                        : Language.component("messages.ability");
+        String id = player.getUniqueId() + ":" + key;
+        long until = System.currentTimeMillis() + millis;
+        Timer previous = active.get(id);
+        if (previous != null && Math.abs(previous.until - until) < 100) return;
+        Timer timer =
+                new Timer(
+                        player.getUniqueId(),
+                        name == null ? Language.component("messages.ability") : name,
+                        left,
+                        until);
+        active.put(id, timer);
+        schedule(id, timer, millis);
+    }
+
+    private static void schedule(String key, Timer timer, long millis) {
+        Bukkit.getScheduler()
+                .runTaskLater(
+                        RunesLegendaryV.instance(),
+                        () -> {
+                            if (active.get(key) != timer) return;
+                            Player player = Bukkit.getPlayer(timer.owner);
+                            if (player == null || !player.isOnline()) {
+                                active.remove(key);
+                                return;
+                            }
+                            long left = timer.left.getAsLong();
+                            if (left > 0) {
+                                schedule(key, timer, left);
+                                return;
+                            }
+                            active.remove(key);
+                            long now = System.currentTimeMillis();
+                            if (now - readies.getOrDefault(timer.owner, 0L) < 500) return;
+                            readies.put(timer.owner, now);
+                            ServerCompat.sendMessage(
+                                    player,
+                                    Language.component("messages.ready").append(timer.name));
+                            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_PLING, .6f, 1.2f);
+                        },
+                        Math.max(1, (millis + 49) / 50));
+    }
+
+    public static void cancel(Player p, String key) {
+        active.remove(p.getUniqueId() + ":" + key);
+    }
+
+    public static void clear(Player p) {
+        String prefix = p.getUniqueId() + ":";
+        active.keySet().removeIf(k -> k.startsWith(prefix));
+        waits.remove(p.getUniqueId());
+        readies.remove(p.getUniqueId());
+    }
+
+    public static void clearAll() {
+        active.clear();
+        waits.clear();
+        readies.clear();
+    }
+}

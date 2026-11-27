@@ -1,0 +1,4 @@
+# Language: ru or en. Apply with /lwv reload.
+language: ru
+interact_cooldown: 0.7
+debug: false

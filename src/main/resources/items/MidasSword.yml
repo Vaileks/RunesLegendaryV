@@ -1,0 +1,13 @@
+{
+  "material": "DIAMOND_SWORD",
+  "damage": 9,
+  "attack_speed": -2.4,
+  "item_model": "civilization:tools/midas_sword",
+  "enchants": {
+    "sharpness": 5
+  },
+  "max_sharpness": 26,
+  "mob_gold_nuggets": 8,
+  "player_gold_nuggets": 27,
+  "player_gold_ingots": 6
+}
